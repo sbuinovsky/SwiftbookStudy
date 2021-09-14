@@ -35,7 +35,7 @@ let daysInYear = 365.25
  2.4 Объявите свойство daysPassed с типом Float и присвойте ему значение количества дней с момента вашего рождения плюс 10 лет (используйте для этого myAgeInTenYears и daysInYear).
  */
 
-let daysPassed: Float = Float(Double(myAgeInTenYears) * daysInYear)
+let daysPassed = Float(myAgeInTenYears) * Float(daysInYear)
 
 /*
  2.5 При помощи функции print() выведите в консоль фразу: «Мой возраст <...> лет. Через 10 лет, мне будет <...> лет, с момента моего рождения пройдет <...> дней". Символы (<...>) необходимо заменить на значения свойств.
