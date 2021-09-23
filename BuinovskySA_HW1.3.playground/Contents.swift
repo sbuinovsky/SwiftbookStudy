@@ -6,16 +6,17 @@ import Foundation
  */
 
 let quantity = 9
-var price = 0
-var sum = 0
+let price: Int
+let sum: Int
 
 if quantity > 0 && quantity < 9 {
     price = 1000
-} else if quantity <= 19 {
+} else if quantity >= 9 && quantity <= 19 {
     price = 800
 } else if quantity >= 20 {
     price = 600
 } else {
+    price = 0
     print("Incorrect value of quantity.")
 }
 
