@@ -52,19 +52,19 @@ let todayDay = 17
 let todayMonth = 10
 let todayYear = 2021
 
-let ageInYears = todayYear - yearOfBirth
-let ageInMonth = ageInYears * 12
-let ageInDays = ageInMonth * 30
-let ageInSeconds = ageInDays * 24 * 60
+let ageInDays = ((todayYear * 12 + todayMonth) - (yearOfBirth * 12 + monthOfBirth)) * 30 + todayDay - dayOfBirth
+let ageInMonth = ageInDays / 30
+let ageInYears = ageInMonth / 12
+let ageInSeconds = ageInDays * 24 * 60 * 60
 print("\(ageInYears) years, \(ageInMonth) months, \(ageInDays) days and \(ageInSeconds) seconds have passed since my birth")
 
 if monthOfBirth > 0 && monthOfBirth <= 3 {
     print("I was born in first quarter of the year")
-} else if monthOfBirth > 3 && monthOfBirth <= 6 {
+} else if monthOfBirth <= 6 {
     print("I was born in second quarter of the year")
-} else if monthOfBirth > 6 && monthOfBirth <= 9 {
+} else if monthOfBirth <= 9 {
     print("I was born in third quarter of the year")
-} else if monthOfBirth > 9 && monthOfBirth <= 12 {
+} else if monthOfBirth <= 12 {
     print("I was born in fourth quarter of the year")
 } else {
     print("Incorrect number of month")
