@@ -10,16 +10,14 @@ import UIKit
 let deposit = 500_000.00
 let period =  5
 let rate = 11.0
-let profit: Double
-var depositInMoment = deposit
+var profit = 0.0
 
 for _ in 1...period {
-    depositInMoment += depositInMoment * rate/100
+    let depositInMoment = deposit + profit
+    profit = depositInMoment * rate/100 - deposit
 }
 
-profit = depositInMoment - deposit
-
-print("Сумма вклада через \(period) лет увеличится на \(String(format: "%.2f", profit)) и составит \(String(format: "%.2f", depositInMoment)) рублей"
+print("Сумма вклада через \(period) лет увеличится на \(String(format: "%.2f", profit)) и составит \(String(format: "%.2f", (deposit + profit))) рублей"
 )
 /*:
  ## Задание 2
