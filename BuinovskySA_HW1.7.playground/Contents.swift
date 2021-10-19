@@ -30,6 +30,10 @@ func mathOperation(firstNumber: Int,
     case .multiplication:
         result = firstNumber * secondNumber
     case .division:
+        if secondNumber == 0 {
+            print("Error: division by zero!")
+            return 0
+        }
         result = firstNumber / secondNumber
     }
     
@@ -42,7 +46,7 @@ func mathOperation(firstNumber: Int,
 mathOperation(firstNumber: 3, secondNumber: 4, operation: .addition)
 mathOperation(firstNumber: 3, secondNumber: 4, operation: .subtraction)
 mathOperation(firstNumber: 3, secondNumber: 4, operation: .multiplication)
-mathOperation(firstNumber: 3, secondNumber: 4, operation: .division)
+mathOperation(firstNumber: 3, secondNumber: 0, operation: .division)
 
 
 /*:
