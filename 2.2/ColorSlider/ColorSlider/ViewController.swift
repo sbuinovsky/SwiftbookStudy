@@ -126,9 +126,9 @@ class ViewController: UIViewController {
         greenSliderView.value = greenSliderView.maximumValue / 2
         blueSliderView.value = blueSliderView.maximumValue / 2
         
-        redSliderLabel.text = "\(tempRed)"
-        greenSliderLabel.text = "\(tempGreen)"
-        blueSliderLabel.text = "\(tempBlue)"
+        redSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempRed))
+        greenSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempGreen))
+        blueSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempBlue))
         
         redSliderLabel.font = UIFont(name: "Helvetica", size: 20)
         greenSliderLabel.font = UIFont(name: "Helvetica", size: 20)
@@ -151,9 +151,9 @@ class ViewController: UIViewController {
     @objc
     func setColors() {
         
-        redSliderLabel.text = "\(tempRed)"
-        greenSliderLabel.text = "\(tempGreen)"
-        blueSliderLabel.text = "\(tempBlue)"
+        redSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempRed))
+        greenSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempGreen))
+        blueSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempBlue))
         
         view.backgroundColor = UIColor(
             cgColor: CGColor(red: (tempRed/255),
