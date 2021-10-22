@@ -30,6 +30,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let sliders = [
+            redSliderView,
+            greenSliderView,
+            blueSliderView
+        ]
+        let labels = [
+            redSliderLabel,
+            greenSliderLabel,
+            blueSliderLabel
+        ]
+        
         // MARK: Subview adding
         view.addSubview(appTitleLabel)
         view.addSubview(redSliderView)
@@ -122,29 +133,18 @@ class ViewController: UIViewController {
         blueSliderView.minimumTrackTintColor = .blue
         blueSliderView.thumbTintColor = .blue
         
-        redSliderView.value = redSliderView.maximumValue / 2
-        greenSliderView.value = greenSliderView.maximumValue / 2
-        blueSliderView.value = blueSliderView.maximumValue / 2
+        for slider in sliders {
+            slider.value = redSliderView.maximumValue / 2
+            slider.addTarget(self,
+                              action: #selector(setColors),
+                              for: .valueChanged)
+        }
         
-        redSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempRed))
-        greenSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempGreen))
-        blueSliderLabel.text = String.localizedStringWithFormat("%.0F", Double(tempBlue))
-        
-        redSliderLabel.font = UIFont(name: "Helvetica", size: 20)
-        greenSliderLabel.font = UIFont(name: "Helvetica", size: 20)
-        blueSliderLabel.font = UIFont(name: "Helvetica", size: 20)
-        
-        
-        redSliderView.addTarget(self,
-                                action: #selector(setColors),
-                                for: .valueChanged)
-        greenSliderView.addTarget(self,
-                                  action: #selector(setColors),
-                                  for: .valueChanged)
-        blueSliderView.addTarget(self,
-                                 action: #selector(setColors),
-                                 for: .valueChanged)
-        
+        for label in labels {
+            label.text = String.localizedStringWithFormat("%.0F", Double(tempRed))
+            label.font = UIFont(name: "Helvetica", size: 20)
+        }
+
     }
     
     // MARK: Sliders action
