@@ -49,12 +49,15 @@ class ViewController: UIViewController {
         
         // MARK: Constraints
         appTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        redSliderView.translatesAutoresizingMaskIntoConstraints = false
-        greenSliderView.translatesAutoresizingMaskIntoConstraints = false
-        blueSliderView.translatesAutoresizingMaskIntoConstraints = false
-        redSliderLabel.translatesAutoresizingMaskIntoConstraints = false
-        greenSliderLabel.translatesAutoresizingMaskIntoConstraints = false
-        blueSliderLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        for label in labels {
+            label.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        for slider in sliders {
+            slider.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         
         let appTitleConstraints = [
             appTitleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
