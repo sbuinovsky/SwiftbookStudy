@@ -16,6 +16,14 @@ class ViewController: UIViewController {
     private let redSliderLabel = UILabel()
     private let greenSliderLabel = UILabel()
     private let blueSliderLabel = UILabel()
+
+    private var sliders: [UISlider] {
+        [redSliderView, greenSliderView, blueSliderView]
+    }
+    
+    private var labels: [UILabel] {
+        [redSliderLabel, greenSliderLabel, blueSliderLabel]
+    }
     
     private var tempRed: CGFloat {
         CGFloat(redSliderView.value)
@@ -29,17 +37,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let sliders = [
-            redSliderView,
-            greenSliderView,
-            blueSliderView
-        ]
-        let labels = [
-            redSliderLabel,
-            greenSliderLabel,
-            blueSliderLabel
-        ]
         
         // MARK: Subview adding
         view.addSubview(appTitleLabel)
@@ -147,6 +144,7 @@ class ViewController: UIViewController {
 
     }
     
+    
     // MARK: Sliders action
     @objc
     func setColors() {
@@ -167,25 +165,13 @@ class ViewController: UIViewController {
                              blue: ((255 - tempBlue)/255),
                              alpha: 1.0))
         
-        redSliderLabel.textColor = UIColor(
-            cgColor: CGColor(red: ((255 - tempRed)/255),
-                             green: ((255 - tempGreen)/255),
-                             blue: ((255 - tempBlue)/255),
-                             alpha: 1.0))
-        
-        greenSliderLabel.textColor = UIColor(
-            cgColor: CGColor(red: ((255 - tempRed)/255),
-                             green: ((255 - tempGreen)/255),
-                             blue: ((255 - tempBlue)/255),
-                             alpha: 1.0))
-        
-        blueSliderLabel.textColor = UIColor(
-            cgColor: CGColor(red: ((255 - tempRed)/255),
-                             green: ((255 - tempGreen)/255),
-                             blue: ((255 - tempBlue)/255),
-                             alpha: 1.0))
+        for label in labels {
+            label.textColor = UIColor(
+                cgColor: CGColor(red: ((255 - tempRed)/255),
+                                 green: ((255 - tempGreen)/255),
+                                 blue: ((255 - tempBlue)/255),
+                                 alpha: 1.0))
+        }
     }
-
-
 }
 
