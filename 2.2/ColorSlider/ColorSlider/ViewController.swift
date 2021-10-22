@@ -28,17 +28,20 @@ class ViewController: UIViewController {
     private var tempRed: CGFloat {
         CGFloat(redSliderView.value)
     }
+    
     private var tempGreen: CGFloat {
         CGFloat(greenSliderView.value)
     }
+    
     private var tempBlue: CGFloat {
         CGFloat(blueSliderView.value)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: Subview adding
+        // MARK: - Subview adding
         view.addSubview(appTitleLabel)
         view.addSubview(redSliderView)
         view.addSubview(redSliderLabel)
@@ -47,7 +50,13 @@ class ViewController: UIViewController {
         view.addSubview(blueSliderView)
         view.addSubview(blueSliderLabel)
         
-        // MARK: Constraints
+        setConstraints()
+        configureViews()
+    }
+    
+    
+    // MARK: - Constraints
+    private func setConstraints() {
         appTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         for label in labels {
@@ -112,9 +121,11 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate(greenSliderLabelConstraints)
         NSLayoutConstraint.activate(blueSliderViewConstraints)
         NSLayoutConstraint.activate(blueSliderLabelConstraints)
-        
-        
-        // MARK: Views config
+    }
+    
+    
+    // MARK: - Views config
+    private func configureViews() {
         appTitleLabel.text = "Background changer"
         appTitleLabel.font = UIFont(name: "Helvetica", size: 30)
         
@@ -144,11 +155,10 @@ class ViewController: UIViewController {
             label.text = String.localizedStringWithFormat("%.0F", Double(tempRed))
             label.font = UIFont(name: "Helvetica", size: 20)
         }
-
     }
     
     
-    // MARK: Sliders action
+    // MARK: - Sliders action
     @objc
     func setColors() {
         
