@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +46,6 @@ class ViewController: UIViewController {
     }
     
     
-    
     @IBAction func loginReminderPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Login reminder",
                                       message: "Your login is \(defaultLogin)",
@@ -68,6 +68,7 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
         guard let userLogin = loginTextField.text else {return}
         guard let userPassword = passwordTextField.text else {return}
@@ -87,12 +88,14 @@ class ViewController: UIViewController {
         }
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeViewController = segue.destination as? WelcomeViewController else {
             return}
         
         welcomeViewController.login = loginTextField.text
     }
+    
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
         guard segue.source is WelcomeViewController else {

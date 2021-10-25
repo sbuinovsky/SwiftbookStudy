@@ -14,7 +14,6 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
