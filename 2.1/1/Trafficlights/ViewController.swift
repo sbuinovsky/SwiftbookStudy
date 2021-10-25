@@ -35,28 +35,35 @@ class ViewController: UIViewController {
         let redLightViewConstraints = [
             redLightView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             redLightView.widthAnchor.constraint(equalToConstant: circleWidth),
-            redLightView.heightAnchor.constraint(equalTo: redLightView.widthAnchor, multiplier: 1.0),
-            redLightView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60)
+            redLightView.heightAnchor.constraint(equalTo: redLightView.widthAnchor,
+                                                 multiplier: 1.0),
+            redLightView.topAnchor.constraint(equalTo: view.topAnchor,
+                                              constant: 60)
         ]
         
         let yellowLightViewConstraints = [
             yellowLightView.centerXAnchor.constraint(equalTo: redLightView.centerXAnchor),
             yellowLightView.widthAnchor.constraint(equalTo: redLightView.widthAnchor),
-            yellowLightView.heightAnchor.constraint(equalTo: yellowLightView.widthAnchor, multiplier: 1.0),
-            yellowLightView.topAnchor.constraint(equalTo: redLightView.bottomAnchor, constant: 20)
+            yellowLightView.heightAnchor.constraint(equalTo: yellowLightView.widthAnchor,
+                                                    multiplier: 1.0),
+            yellowLightView.topAnchor.constraint(equalTo: redLightView.bottomAnchor,
+                                                 constant: 20)
         ]
         
         let greenLightViewConstraints = [
             greenLightView.centerXAnchor.constraint(equalTo: redLightView.centerXAnchor),
             greenLightView.widthAnchor.constraint(equalTo: redLightView.widthAnchor),
-            greenLightView.heightAnchor.constraint(equalTo: yellowLightView.widthAnchor, multiplier: 1.0),
-            greenLightView.topAnchor.constraint(equalTo: yellowLightView.bottomAnchor, constant: 20)
+            greenLightView.heightAnchor.constraint(equalTo: yellowLightView.widthAnchor,
+                                                   multiplier: 1.0),
+            greenLightView.topAnchor.constraint(equalTo: yellowLightView.bottomAnchor,
+                                                constant: 20)
         ]
         
         let controlButtonConstraints = [
             controlButton.centerXAnchor.constraint(equalTo: redLightView.centerXAnchor),
             controlButton.widthAnchor.constraint(equalTo: redLightView.widthAnchor),
-            controlButton.topAnchor.constraint(equalTo: greenLightView.bottomAnchor, constant: 40)
+            controlButton.topAnchor.constraint(equalTo: greenLightView.bottomAnchor,
+                                               constant: 40)
         ]
         
         
@@ -81,7 +88,9 @@ class ViewController: UIViewController {
         controlButton.backgroundColor = UIColor.blue
         controlButton.layer.cornerRadius = 10
         controlButton.setTitle("Start", for: .normal)
-        controlButton.addTarget(self, action: #selector(controlButtonPressed), for: .touchUpInside)
+        controlButton.addTarget(self,
+                                action: #selector(controlButtonPressed),
+                                for: .touchUpInside)
         
     }
 
