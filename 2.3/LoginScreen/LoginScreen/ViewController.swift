@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     private let defaultLogin = "root"
     private let defaultPassword = "toor"
@@ -18,6 +18,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.loginTextField.delegate = self
+        self.passwordTextField.delegate = self
+        
+        self.loginTextField.tag = 0
+        self.passwordTextField.tag = 1
+        
+        self.loginTextField.enablesReturnKeyAutomatically = true
+        self.passwordTextField.enablesReturnKeyAutomatically = true
         
     }
 
@@ -105,5 +114,21 @@ class ViewController: UIViewController {
         passwordTextField.text = nil
     }
     
+    
+    private func tagBasedTextField(_ textField: UITextField) {
+        let nextTextFieldTag = textField.tag + 1
+        
+        if let nextTextField = textField.superview?.viewWithTag(nextTextFieldTag) as? UITextField {
+            nextTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.tagBasedTextField(textField)
+        return true
+    }
 }
 

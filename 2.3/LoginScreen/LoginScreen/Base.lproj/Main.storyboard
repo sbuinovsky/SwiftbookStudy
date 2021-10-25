@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="40" id="CEk-4C-kfR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
                                     <action selector="loginDidEndEditing:" destination="4RO-VL-vhX" eventType="editingDidEnd" id="yzS-Aj-sVQ"/>
                                     <action selector="loginDidStartEditing:" destination="4RO-VL-vhX" eventType="editingDidBegin" id="gMA-QO-Tne"/>
@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="height" constant="40" id="atA-3K-yoU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                 <connections>
                                     <action selector="passwordDidEndEditing:" destination="4RO-VL-vhX" eventType="editingDidEnd" id="p0j-m2-1Og"/>
                                     <action selector="passwordDidStartEditing:" destination="4RO-VL-vhX" eventType="editingDidBegin" id="Ds7-Qn-vrr"/>
