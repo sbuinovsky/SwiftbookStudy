@@ -128,6 +128,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.tagBasedTextField(textField)
+        if textField.tag == 1 {
+            loginButtonPressed(self)
+        }
         return true
     }
 }
