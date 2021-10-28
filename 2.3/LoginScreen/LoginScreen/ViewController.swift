@@ -56,25 +56,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func loginReminderPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Login reminder",
-                                      message: "Your login is \(defaultLogin)",
-                                      preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Thanks!", style: .default, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
+        showReminderAlert(title: "Login reminder",
+                          message: "Your login is \(defaultLogin)")
         
     }
     
     
     @IBAction func passwordReminderPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Password reminder",
-                                      message: "Your password is \(defaultPassword)",
-                                      preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Thanks!", style: .default, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
+        showReminderAlert(title: "Password reminder",
+                          message: "Your password is \(defaultPassword)")
     }
     
     
@@ -85,14 +77,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if userLogin == defaultLogin && userPassword == defaultPassword {
             performSegue(withIdentifier: "toWelcomeScreen", sender: UIButton.self)
         } else {
-            let alert = UIAlertController(title: "Access denied!",
-                                          message: "Your login or password is incorrect!",
-                                          preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-            
+            showAccessAlert(title: "Access denied!", message: "Your login or password is incorrect!")
             passwordTextField.text = nil
         }
     }
@@ -114,6 +100,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.text = nil
     }
     
+}
+
+
+// MARK: - Extension
+extension ViewController {
+    
     
     private func tagBasedTextField(_ textField: UITextField) {
         let nextTextFieldTag = textField.tag + 1
@@ -126,12 +118,37 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.tagBasedTextField(textField)
         if textField.tag == 1 {
             loginButtonPressed(self)
         }
         return true
+    }
+    
+    
+    private func showReminderAlert(title: String,
+                                   message: String) {
+        
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Thanks!", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    private func showAccessAlert(title: String,
+                                   message: String) {
+        
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 
