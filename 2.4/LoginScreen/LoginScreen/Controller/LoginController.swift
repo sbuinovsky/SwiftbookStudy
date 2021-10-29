@@ -7,11 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class LoginController: UIViewController, UITextFieldDelegate {
 
-    private let defaultLogin = "root"
-    private let defaultPassword = "toor"
-
+    private let user = User()
+    
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -28,6 +27,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.loginTextField.enablesReturnKeyAutomatically = true
         self.passwordTextField.enablesReturnKeyAutomatically = true
         
+        user.configureUser()
+        
+        //MARK: - Fill form
+        self.loginTextField.text = user.login
+        self.passwordTextField.text = user.password
     }
 
     
@@ -58,7 +62,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginReminderPressed(_ sender: Any) {
         
         showReminderAlert(title: "Login reminder",
-                          message: "Your login is \(defaultLogin)")
+                          message: "Your login is \(user.login)")
         
     }
     
@@ -66,7 +70,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func passwordReminderPressed(_ sender: Any) {
         
         showReminderAlert(title: "Password reminder",
-                          message: "Your password is \(defaultPassword)")
+                          message: "Your password is \(user.password)")
     }
     
     
@@ -74,8 +78,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         guard let userLogin = loginTextField.text else {return}
         guard let userPassword = passwordTextField.text else {return}
         
-        if userLogin == defaultLogin && userPassword == defaultPassword {
-            performSegue(withIdentifier: "toWelcomeScreen", sender: UIButton.self)
+        if userLogin == user.login && userPassword == user.password {
+            performSegue(withIdentifier: "tabBarControllerSegue", sender: UIButton.self)
         } else {
             
             showAccessAlert(title: "Access denied!", message: "Your login or password is incorrect!")
@@ -85,26 +89,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeViewController = segue.destination as? WelcomeViewController else {
-            return}
+        guard let tabBarController = segue.destination as? UITabBarController else {return}
         
-        welcomeViewController.login = loginTextField.text
-    }
-    
-    
-    @IBAction func unwind(for segue: UIStoryboardSegue) {
-        guard segue.source is WelcomeViewController else {
-            return}
+        guard let tabBarControllers = tabBarController.viewControllers else {return}
         
-        loginTextField.text = nil
-        passwordTextField.text = nil
+        for controller in tabBarControllers {
+            
+            switch controller {
+            case is AboutController:
+                let destController = controller as! AboutController
+                destController.user = user
+            case is SkillsController:
+                let destController = controller as! SkillsController
+                destController.skills = user.skills
+            case is UINavigationController:
+                let navigationController = controller as! UINavigationController
+                guard let destController = navigationController.topViewController as? ProjectsController else {return}
+                destController.projects = user.projects
+            default:
+                break
+            }
+            
+        }
     }
     
 }
 
 
 // MARK: - Extension
-extension ViewController {
+extension LoginController {
     
     
     private func tagBasedTextField(_ textField: UITextField) {
