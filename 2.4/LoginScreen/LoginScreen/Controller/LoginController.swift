@@ -7,66 +7,45 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
-
-    private let defaultLogin = "root"
-    private let defaultPassword = "toor"
-
+class LoginController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loginTextField.delegate = self
-        self.passwordTextField.delegate = self
+        loginTextField.delegate = self
+        passwordTextField.delegate = self
         
-        self.loginTextField.tag = 0
-        self.passwordTextField.tag = 1
+        loginTextField.tag = 0
+        passwordTextField.tag = 1
         
-        self.loginTextField.enablesReturnKeyAutomatically = true
-        self.passwordTextField.enablesReturnKeyAutomatically = true
+        loginTextField.enablesReturnKeyAutomatically = true
+        passwordTextField.enablesReturnKeyAutomatically = true
         
-    }
-
-    
-    @IBAction func loginDidStartEditing(_ sender: Any) {
-        loginTextField.placeholder = ""
-    }
-    
-    
-    @IBAction func loginDidEndEditing(_ sender: Any) {
-        if loginTextField.state.isEmpty {
-            loginTextField.placeholder = "Login..."
-        }
-    }
-    
-    
-    @IBAction func passwordDidStartEditing(_ sender: Any) {
-        passwordTextField.placeholder = ""
-    }
-    
-    
-    @IBAction func passwordDidEndEditing(_ sender: Any) {
-        if passwordTextField.state.isEmpty {
-            passwordTextField.placeholder = "Password..."
-        }
+        user = User()
+        user?.configureUser()
+        
+        //MARK: - Fill form
+        loginTextField.text = user?.login
+        passwordTextField.text = user?.password
     }
     
     
     @IBAction func loginReminderPressed(_ sender: Any) {
         
         showReminderAlert(title: "Login reminder",
-                          message: "Your login is \(defaultLogin)")
-        
+                          message: "Your login is \(user?.login ?? "")")
     }
     
     
     @IBAction func passwordReminderPressed(_ sender: Any) {
         
         showReminderAlert(title: "Password reminder",
-                          message: "Your password is \(defaultPassword)")
+                          message: "Your password is \(user?.password ?? "")")
     }
     
     
@@ -74,8 +53,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         guard let userLogin = loginTextField.text else {return}
         guard let userPassword = passwordTextField.text else {return}
         
-        if userLogin == defaultLogin && userPassword == defaultPassword {
-            performSegue(withIdentifier: "toWelcomeScreen", sender: UIButton.self)
+        if userLogin == user?.login && userPassword == user?.password {
+            performSegue(withIdentifier: "tabBarControllerSegue", sender: UIButton.self)
         } else {
             
             showAccessAlert(title: "Access denied!", message: "Your login or password is incorrect!")
@@ -85,26 +64,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeViewController = segue.destination as? WelcomeViewController else {
-            return}
+        guard let tabBarController = segue.destination as? UITabBarController else {return}
         
-        welcomeViewController.login = loginTextField.text
-    }
-    
-    
-    @IBAction func unwind(for segue: UIStoryboardSegue) {
-        guard segue.source is WelcomeViewController else {
-            return}
+        guard let tabBarControllers = tabBarController.viewControllers else {return}
         
-        loginTextField.text = nil
-        passwordTextField.text = nil
+        for controller in tabBarControllers {
+            
+            switch controller {
+            case is AboutController:
+                let destController = controller as! AboutController
+                destController.user = user
+            case is SkillsController:
+                let destController = controller as! SkillsController
+                destController.skills = user?.skills
+            case is UINavigationController:
+                let navigationController = controller as! UINavigationController
+                guard let destController = navigationController.topViewController as? ProjectsController else {return}
+                destController.projects = user?.projects
+            default:
+                break
+            }
+            
+        }
     }
     
 }
 
 
 // MARK: - Extension
-extension ViewController {
+extension LoginController {
     
     
     private func tagBasedTextField(_ textField: UITextField) {
@@ -120,7 +108,7 @@ extension ViewController {
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.tagBasedTextField(textField)
+        tagBasedTextField(textField)
         if textField.tag == 1 {
             loginButtonPressed(self)
         }
