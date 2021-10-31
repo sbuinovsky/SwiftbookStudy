@@ -12,7 +12,7 @@ class ProjectsController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
-    var projects: [Project] = []
+    var projects: [Project]?
     
     
     override func viewDidLoad() {
@@ -24,17 +24,20 @@ class ProjectsController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        projects.count
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        projects?.count ?? 0
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell", for: indexPath) as! ProjectCell
         
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        cell.projectLabel.text = projects[indexPath.row].title
+        cell.projectLabel.text = projects?[indexPath.row].title ?? ""
         
         return cell
     }
@@ -45,6 +48,5 @@ class ProjectsController: UIViewController, UITableViewDelegate, UITableViewData
             guard let cell = sender as? ProjectCell else {return}
             destination.projectTitle = cell.projectLabel.text ?? ""
         }
-        
     }
 }

@@ -29,10 +29,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                <connections>
-                                    <action selector="loginDidEndEditing:" destination="4RO-VL-vhX" eventType="editingDidEnd" id="yzS-Aj-sVQ"/>
-                                    <action selector="loginDidStartEditing:" destination="4RO-VL-vhX" eventType="editingDidBegin" id="gMA-QO-Tne"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UIu-Uh-wnz">
                                 <rect key="frame" x="20" y="204" width="374" height="40"/>
@@ -41,10 +37,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
-                                <connections>
-                                    <action selector="passwordDidEndEditing:" destination="4RO-VL-vhX" eventType="editingDidEnd" id="p0j-m2-1Og"/>
-                                    <action selector="passwordDidStartEditing:" destination="4RO-VL-vhX" eventType="editingDidBegin" id="Ds7-Qn-vrr"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-MZ-Gpq">
                                 <rect key="frame" x="175.5" y="287" width="63.5" height="31"/>
@@ -362,7 +354,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xcm-IU-czU" secondAttribute="height" multiplier="1:1" id="1rC-83-ULw"/>
                                 </constraints>
-                                <string key="image">combination-lock-choosing-the-right-combination-of-numbers-4k-virtual-animation-spinning-combination-lock-cyber-security-concept_hmqw6jdm__F0013</string>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rg5-Aj-aeF">
                                 <rect key="frame" x="183" y="441" width="48" height="24"/>
@@ -396,9 +387,6 @@
         </scene>
     </scenes>
     <resources>
-        <image width="3840" height="2160">
-            <string key="name">combination-lock-choosing-the-right-combination-of-numbers-4k-virtual-animation-spinning-combination-lock-cyber-security-concept_hmqw6jdm__F0013</string>
-        </image>
         <image name="curlybraces" catalog="system" width="128" height="128"/>
         <image name="folder" catalog="system" width="128" height="97"/>
         <image name="info" catalog="system" width="93" height="128"/>

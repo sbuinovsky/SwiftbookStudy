@@ -22,7 +22,6 @@
 		C2FB9910272B2992008CB164 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB990F272B2992008CB164 /* User.swift */; };
 		C2FB9912272B2A33008CB164 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB9911272B2A33008CB164 /* Project.swift */; };
 		C2FB9914272B2A4A008CB164 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB9913272B2A4A008CB164 /* Skill.swift */; };
-		C2FB9916272B2AC1008CB164 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB9915272B2AC1008CB164 /* Experience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +42,6 @@
 		C2FB990F272B2992008CB164 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C2FB9911272B2A33008CB164 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C2FB9913272B2A4A008CB164 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
-		C2FB9915272B2AC1008CB164 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +100,6 @@
 				C2FB990F272B2992008CB164 /* User.swift */,
 				C2FB9911272B2A33008CB164 /* Project.swift */,
 				C2FB9913272B2A4A008CB164 /* Skill.swift */,
-				C2FB9915272B2AC1008CB164 /* Experience.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,7 +200,6 @@
 				C27A4B11272BCEFE00EC45F4 /* ProjectController.swift in Sources */,
 				C2FB9914272B2A4A008CB164 /* Skill.swift in Sources */,
 				C2AD237B27273D550074140B /* LoginController.swift in Sources */,
-				C2FB9916272B2AC1008CB164 /* Experience.swift in Sources */,
 				C27A4B0D272B4EA500EC45F4 /* SkillCell.swift in Sources */,
 				C27A4B0A272B491000EC45F4 /* SkillsController.swift in Sources */,
 				C2AD237727273D550074140B /* AppDelegate.swift in Sources */,

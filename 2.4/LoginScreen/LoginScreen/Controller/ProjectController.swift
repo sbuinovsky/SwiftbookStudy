@@ -9,7 +9,7 @@ import UIKit
 
 class ProjectController: UIViewController {
 
-    var projectTitle = ""
+    var projectTitle: String?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var projectImage: UIImageView!
@@ -17,9 +17,8 @@ class ProjectController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(projectTitle)
-        titleLabel.text = projectTitle
+        
+        titleLabel.text = projectTitle ?? ""
         projectImage.image = UIImage(named: "lock_image")
     }
 
