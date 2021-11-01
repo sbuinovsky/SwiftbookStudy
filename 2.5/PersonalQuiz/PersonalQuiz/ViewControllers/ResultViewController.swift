@@ -16,7 +16,6 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.hidesBackButton = true
 
         var typesCounter: [AnimalType : Int] = [:]
