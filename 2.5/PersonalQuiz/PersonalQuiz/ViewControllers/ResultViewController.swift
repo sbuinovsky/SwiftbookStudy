@@ -8,7 +8,6 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
     
     @IBOutlet weak var animalLabel: UILabel!
     @IBOutlet weak var animalDescription: UILabel!
@@ -36,7 +35,5 @@ class ResultViewController: UIViewController {
         
         animalLabel.text = "\(commonAnimalType.key) - \(commonAnimalType.key.rawValue)"
         animalDescription.text = commonAnimalType.key.definition
-        
-        
     }
 }
