@@ -17,22 +17,36 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-
-        var typesCounter: [AnimalType : Int] = [:]
+        
+        let typesCounter = countAnimals(for: answers)
+        guard let animalType = getCommonAnimal(for: typesCounter) else { return }
+        
+        animalLabel.text = "\(animalType) - \(animalType.rawValue)"
+        animalDescription.text = animalType.definition
+    }
+    
+    //MARK: - Private methods
+    private func countAnimals(for answers: [Answer]) -> [AnimalType : Int] {
+        var counter: [AnimalType : Int] = [:]
         
         answers.forEach {
-            if let currentValue = typesCounter[$0.type] {
-                typesCounter.updateValue(currentValue + 1, forKey: $0.type)
+            if let currentValue = counter[$0.type] {
+                counter.updateValue(currentValue + 1, forKey: $0.type)
             } else {
-                typesCounter.updateValue(1, forKey: $0.type)
+                counter.updateValue(1, forKey: $0.type)
             }
         }
+        return counter
+    }
+    
+    private func getCommonAnimal(for typesCounter: [AnimalType : Int]) -> AnimalType? {
         
-        guard let commonAnimalType = (typesCounter.sorted() {
+        let sortedAnimals = typesCounter.sorted {
             $0.value > $1.value
-        }).first else { return }
+        }
         
-        animalLabel.text = "\(commonAnimalType.key) - \(commonAnimalType.key.rawValue)"
-        animalDescription.text = commonAnimalType.key.definition
+        let animalType = sortedAnimals.first?.key
+        
+        return animalType
     }
 }

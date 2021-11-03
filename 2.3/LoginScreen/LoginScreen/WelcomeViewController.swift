@@ -9,7 +9,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    var login: String?
+    var login: String!
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
@@ -17,7 +17,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        welcomeLabel.text = "Welcome " + (login ?? "")
+        welcomeLabel.text = "Welcome " + (login)
     }
     
 }
