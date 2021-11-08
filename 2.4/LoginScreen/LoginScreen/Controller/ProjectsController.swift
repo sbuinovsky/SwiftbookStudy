@@ -12,7 +12,7 @@ class ProjectsController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
-    var projects: [Project]?
+    var projects: [Project]!
     
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class ProjectsController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        projects?.count ?? 0
+        projects.count
     }
     
     
@@ -37,7 +37,7 @@ class ProjectsController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        cell.projectLabel.text = projects?[indexPath.row].title ?? ""
+        cell.projectLabel.text = projects[indexPath.row].title
         
         return cell
     }

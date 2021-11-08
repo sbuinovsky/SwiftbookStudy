@@ -9,7 +9,7 @@ import UIKit
 
 class AboutController: UIViewController {
 
-    var user: User?
+    var user: User!
     
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var shortName: UILabel!
@@ -22,15 +22,13 @@ class AboutController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard let userData = user else { return }
         
-        avatar.image = userData.avatar
-        shortName.text = "Full name: \(userData.shortName)"
-        email.text = "email: \(userData.email)"
-        web.text = "web: \(userData.web)"
-        skills.text = "Number of skills: \(userData.skills?.count ?? 0)"
-        projects.text = "Number of projects: \(userData.projects?.count ?? 0)"
+        avatar.image = user.avatar
+        shortName.text = "Full name: \(user.shortName)"
+        email.text = "email: \(user.email)"
+        web.text = "web: \(user.web)"
+        skills.text = "Number of skills: \(user.skills?.count ?? 0)"
+        projects.text = "Number of projects: \(user.projects?.count ?? 0)"
     }
     
 }

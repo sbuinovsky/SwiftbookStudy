@@ -9,7 +9,7 @@ import UIKit
 
 class SkillsController: UITableViewController {
 
-    var skills: [Skill]?
+    var skills: [Skill]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class SkillsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        skills?.count ?? 0
+        skills.count
     }
 
     
@@ -32,8 +32,8 @@ class SkillsController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "skillCell", for: indexPath) as! SkillCell
 
-        cell.skillTitle.text = skills?[indexPath.row].title ?? ""
-        cell.skillDescription.text = skills?[indexPath.row].description ?? ""
+        cell.skillTitle.text = skills[indexPath.row].title
+        cell.skillDescription.text = skills[indexPath.row].description
 
         return cell
     }
